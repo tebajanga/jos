@@ -1,3 +1,7 @@
+cp components/* ./
+cp boot/* ./
+cp bitmaps/* ./
+cp documentations/* ./
 gcc -Werror -Wall -o mkfs mkfs.c
 gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -fvar-tracking -fvar-tracking-assignments -O0 -g -Wall -MD -gdwarf-2 -m32 -w -fno-omit-frame-pointer -fno-stack-protector   -c -o ulib.o ulib.c
 gcc -m32 -gdwarf-2 -Wa,-divide   -c -o usys.o usys.S
@@ -65,11 +69,11 @@ gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -fvar-tracking -fvar-trac
 ld -m    elf_i386 -N -e main -Ttext 0 -o _demo demo.o ulib.o usys.o printf.o umalloc.o bitmap.o jos_ui.o
 objdump -S _demo > demo.asm
 objdump -t _demo | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > demo.sym
-./mkfs fs.img README readme.txt desktop.bmp explorer.bmp txt.bmp pic.bmp exec.bmp folder.bmp unknow.bmp _init _desktop _sh _cli _echo _ls _clear _cat _shutdown _parent _mkdir _image_viewer _Editor _explorer _demo 
-used 34 (bit 6 ninode 26) free 34 log 30 total 20480
-balloc: first 4944 blocks have been allocated
-balloc: write bitmap block at sector 28
-balloc: write bitmap block at sector 29
+./mkfs jos_fs.img ABOUT.txt Developers.txt HELP.txt desktop.bmp explorer.bmp txt.bmp pic.bmp exec.bmp folder.bmp unknow.bmp _init _desktop _sh _cli _echo _ls _clear _cat _shutdown _parent _mkdir _image_viewer _Editor _explorer _demo 
+#used 34 (bit 6 ninode 26) free 34 log 30 total 20480
+#balloc: first 4942 blocks have been allocated
+#balloc: write bitmap block at sector 28
+#balloc: write bitmap block at sector 29
 gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -fvar-tracking -fvar-tracking-assignments -O0 -g -Wall -MD -gdwarf-2 -m32 -w -fno-omit-frame-pointer -fno-stack-protector -fno-pic -O -nostdinc -I. -c bootmain.c
 gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -fvar-tracking -fvar-tracking-assignments -O0 -g -Wall -MD -gdwarf-2 -m32 -w -fno-omit-frame-pointer -fno-stack-protector -fno-pic -nostdinc -I. -c bootasm.S
 ld -m    elf_i386 -N -e start -Ttext 0x7C00 -o bootblock.o bootasm.o bootmain.o
@@ -121,19 +125,43 @@ objdump -S initcode.o > initcode.asm
 ld -m    elf_i386 -T kernel.ld -o kernel entry.o bio.o console.o exec.o file.o fs.o ide.o ioapic.o kalloc.o kbd.o lapic.o log.o main.o mp.o picirq.o pipe.o proc.o spinlock.o string.o swtch.o syscall.o sysfile.o sysproc.o timer.o trapasm.o trap.o uart.o vectors.o vm.o msg.o mouse.o gui.o window_manager.o  -b binary initcode entryother
 objdump -S kernel > kernel.asm
 objdump -t kernel | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > kernel.sym
-dd if=/dev/zero of=xv6.img count=10000
-dd if=bootblock of=xv6.img conv=notrunc
-dd if=kernel of=xv6.img seek=1 conv=notrunc
-qemu-system-i386 -serial mon:stdio -hdb fs.img xv6.img -smp 1 -m 512 -vga std 
-xv6...
-==============================
-: Joint Operating Systems
-: Version 0.10
--------------------------------
-: (c) 2016 - JOS-FYP
-===============================
+dd if=/dev/zero of=jos.img count=10000
+dd if=bootblock of=jos.img conv=notrunc
+dd if=kernel of=jos.img seek=1 conv=notrunc
 
-Type a command to continue
-or type ls to view list of all available commands
-JOS Terminal starting
-$ 
+mv *.o ./objects
+rm *.h
+rm *.d
+rm *.sym
+rm *.asm
+rm *.c
+rm *.list
+rm *.pl
+rm _*
+rm *.S
+rm *.out
+rm *.p
+rm *.spec
+rm *.patch
+rm *.ld
+rm *.hdr
+rm *.ftr
+rm *.bmp
+rm *.txt
+rm kernel
+rm runoff
+rm runoff1
+rm cuth
+rm printpcs
+rm spinp
+rm entryother
+rm gdbutil
+rm initcode
+rm bootblock
+rm show1
+rm mkfs
+cp *.img ./images
+
+qemu-system-i386 -serial mon:stdio -hdb jos_fs.img jos.img -smp 1 -m 512 -vga std
+
+rm *.img

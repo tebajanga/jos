@@ -57,15 +57,15 @@ mpenter(void)
 static void
 mpmain(void)
 {
-  cprintf("==============================\n");
+  cprintf("=========================\n");
   cprintf(": Joint Operating Systems\n");
   cprintf(": Version 0.10\n");
-  cprintf("-------------------------------\n");
+  cprintf("-------------------------\n");
   cprintf(": (c) 2016 - JOS-FYP\n");
-  cprintf("===============================\n");
+  cprintf("=========================\n");
   cprintf("\n");
   cprintf("Type a command to continue\n");
-  cprintf("or type ls to view list of all available commands\n");
+  cprintf("or type help to view list of all available commands.\n");
   idtinit();       // load idt register
   xchg(&cpu->started, 1); // tell startothers() we're up
   scheduler();     // start running processes
