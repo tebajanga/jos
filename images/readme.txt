@@ -1,0 +1,1 @@
+Images files folder. (.img)
