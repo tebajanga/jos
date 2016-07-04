@@ -76,15 +76,15 @@ runcmd(struct cmd *cmd)
     if(ecmd->argv[0] == 0)
       exit();
     exec(ecmd->argv[0], ecmd->argv);
-    printf(2, "command \"%s\" not found.\n", ecmd->argv[0]);
-    printf(2, "Type \"help\" to view the list of all available commands.\n");
+    printf(2, "Amri\"%s\" haipo\n", ecmd->argv[0]);
+    printf(2, "Andika \"msaada\" Kuona orodha ya amri zilizopo.\n");
     break;
 
   case REDIR:
     rcmd = (struct redircmd*)cmd;
     close(rcmd->fd);
     if(open(rcmd->file, rcmd->mode) < 0){
-      printf(2, "open %s failed\n", rcmd->file);
+      printf(2, "imeshindwa kufungua  %s\n", rcmd->file);
       exit();
     }
     runcmd(rcmd->cmd);
@@ -382,7 +382,7 @@ parseredirs(struct cmd *cmd, char **ps, char *es)
   while(peek(ps, es, "<>")){
     tok = gettoken(ps, es, 0, 0);
     if(gettoken(ps, es, &q, &eq) != 'a')
-      panic("missing file for redirection");
+      panic("mafaili yamekosekana kwa uhamisho");
     switch(tok){
     case '<':
       cmd = redircmd(cmd, q, eq, O_RDONLY, 0);
@@ -408,7 +408,7 @@ parseblock(char **ps, char *es)
   gettoken(ps, es, 0, 0);
   cmd = parseline(ps, es);
   if(!peek(ps, es, ")"))
-    panic("syntax - missing )");
+    panic("usahihi umekosekana )");
   gettoken(ps, es, 0, 0);
   cmd = parseredirs(cmd, ps, es);
   return cmd;
@@ -434,12 +434,12 @@ parseexec(char **ps, char *es)
     if((tok=gettoken(ps, es, &q, &eq)) == 0)
       break;
     if(tok != 'a')
-      panic("syntax");
+      panic("usahihi");
     cmd->argv[argc] = q;
     cmd->eargv[argc] = eq;
     argc++;
     if(argc >= MAXARGS)
-      panic("too many args");
+      panic("vipitisho vimezidi");
     ret = parseredirs(ret, ps, es);
   }
   cmd->argv[argc] = 0;

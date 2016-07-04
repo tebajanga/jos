@@ -5,7 +5,7 @@
 #include "user.h"
 #include "fcntl.h"
 
-char *argv[] = { "cli", 0 };
+char *argv[] = { "amri", 0 };
 
 int
 main(void)
@@ -20,15 +20,15 @@ main(void)
   dup(0);  // stderr
 
   for(;;){
-    printf(1, "JOS Terminal starting\n");
+    printf(1, "JOS imeanzisha kipindi\n");
     pid = fork();
     if(pid < 0){
-      printf(1, "Terminal: fork failed\n");
+      printf(1, "Kipindi: Kimesitishwa\n");
       exit();
     }
     if(pid == 0){
-      exec("cli", argv);
-      printf(1, "JOS Terminal starting: failed\n");
+      exec("amri", argv);
+      printf(1, "JOS imeanzisha kipindi: imesitishwa\n");
       exit();
     }
     while((wpid=wait()) >= 0 && wpid != pid)

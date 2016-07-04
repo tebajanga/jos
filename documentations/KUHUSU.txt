@@ -1,4 +1,4 @@
 Joint Operating System - JOS
-Version 0.10
+Version 0.10 - Swahili
 A Software Engineering Final Year Product.
 Copyright 2016

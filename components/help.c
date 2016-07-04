@@ -6,19 +6,19 @@
 int
 main(int argc, char *argv[])
 {
-  printf(1, "List of JOS Available Commands\n");
-  printf(1, "------------------------------\n");
-  printf(1, "calc     - Running a calculator.\n");
-  printf(1, "cat      - Viewing content of a file.\n");
-  printf(1, "clear    - Clearing the screen.\n");
-  printf(1, "cli      - Starting JOS Command Line Interface.\n");
-  printf(1, "desktop  - Starting JOS in Graphical User Interface.\n");
-  printf(1, "echo     - Displaying text on a screen.\n");
-  printf(1, "help     - Viewing list of all available commands.\n");
-  printf(1, "kill     - Killing a process.\n");
-  printf(1, "ls       - Listing all files and folders.\n");
-  printf(1, "mkdir    - Creating a folder.\n");
-  printf(1, "shutdown - Exiting Joint Operating System.\n");
-  printf(1, "version  - Showing current JOS Version.\n");
+  printf(1, "Orodha ya amri zilizopo kwenye JOS\n");
+  printf(1, "----------------------------------\n");
+  printf(1, "amri      - Anzisha mstari amri wa JOS\n");
+  printf(1, "kidadisi  - Anzisha JOS kwa muonekano wa picha\n");
+  printf(1, "kikokotoa - Kuanzisha kikokotoa\n");
+  printf(1, "msaada    - Kuona orodha ya amri zilizopo\n");
+  printf(1, "ondosha   - Kuondoa mchakato uliopo\n");
+  printf(1, "onesha    - Kuonyesha nakala kwenye kionyeshi\n");
+  printf(1, "orodha    - Kuorodhesha mafaili na saraka zilizopo kwenye JOS\n");
+  printf(1, "sarikisha - Kufanya saraka\n");
+  printf(1, "toleo     - kuonyesha toleo la JOS\n");
+  printf(1, "unganisha - Kuona kilicho ndani ya faili\n");
+  printf(1, "wazi      - futa maneno yote kwenye kionyeshi\n");
+  printf(1, "zimisha   - Kuzimisha Joint Operating System.\n");
   exit();
 }

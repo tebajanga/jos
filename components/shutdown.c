@@ -4,7 +4,7 @@
 #include "stat.h"
 
 int main(){
-	printf(1, "Shutting Down:\n");
+	printf(1, "Inazimisha:\n");
 	shutdown();
 	exit();
 }

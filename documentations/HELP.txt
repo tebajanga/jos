@@ -1,9 +1,0 @@
-Joint Operating System
-----------------------
-
-List of available commands
-==========================
-
-1. help	- To view the list of all available commands.
-2. ls	- To list all files and folders on current directory.
-3. echo	- To display some text on screen.

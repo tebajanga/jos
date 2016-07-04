@@ -31,12 +31,12 @@ ls(char *path)
   struct stat st;
   
   if((fd = open(path, 0)) < 0){
-    printf(2, "ls: cannot open %s\n", path);
+    printf(2, "orodha: imeshindwa fungua %s\n", path);
     return;
   }
   
   if(fstat(fd, &st) < 0){
-    printf(2, "ls: cannot stat %s\n", path);
+    printf(2, "orodha: imeshindwa anzisha %s\n", path);
     close(fd);
     return;
   }
@@ -48,7 +48,7 @@ ls(char *path)
   
   case T_DIR:
     if(strlen(path) + 1 + DIRSIZ + 1 > sizeof buf){
-      printf(1, "ls: path too long\n");
+      printf(1, "orodha: njia ndefu sana\n");
       break;
     }
     strcpy(buf, path);
@@ -60,17 +60,17 @@ ls(char *path)
       memmove(p, de.name, DIRSIZ);
       p[DIRSIZ] = 0;
       if(stat(buf, &st) < 0){
-        printf(1, "ls: cannot stat %s\n", buf);
+        printf(1, "orodha: imeshindwa anzisha %s\n", buf);
         continue;
       }
 	if(st.type == 1){
-      		printf(1, "%s DIR\n", fmtname(buf),st.type);
+      		printf(1, "%s SARAKA\n", fmtname(buf),st.type);
 	}
 	else if(st.type == 2){
-      		printf(1, "%s FILE\n", fmtname(buf),st.type);
+      		printf(1, "%s FAILI\n", fmtname(buf),st.type);
 	}
 	else if(st.type == 3){
-      		printf(1, "%s DEV\n", fmtname(buf),st.type);
+      		printf(1, "%s KIFAA\n", fmtname(buf),st.type);
 	}
     }
     break;

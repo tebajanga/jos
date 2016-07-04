@@ -59,13 +59,13 @@ mpmain(void)
 {
   cprintf("=========================\n");
   cprintf(": Joint Operating Systems\n");
-  cprintf(": Version 0.10\n");
+  cprintf(": Version 0.10 Swahili\n");
   cprintf("-------------------------\n");
   cprintf(": (c) 2016 - JOS-FYP\n");
   cprintf("=========================\n");
   cprintf("\n");
-  cprintf("Type a command to continue\n");
-  cprintf("or type help to view list of all available commands.\n");
+  cprintf("Andika amri kuendelea\n");
+  cprintf("au andika msaada kupata orodha ya amri zilizopo.\n");
   idtinit();       // load idt register
   xchg(&cpu->started, 1); // tell startothers() we're up
   scheduler();     // start running processes
@@ -120,9 +120,4 @@ pde_t entrypgdir[NPDENTRIES] = {
   [KERNBASE>>PDXSHIFT] = (0) | PTE_P | PTE_W | PTE_PS,
 };
 
-//PAGEBREAK!
-// Blank page.
-//PAGEBREAK!
-// Blank page.
-//PAGEBREAK!
-// Blank page.
+
