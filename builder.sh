@@ -37,6 +37,27 @@ gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -fvar-tracking -fvar-trac
 ld -m    elf_i386 -N -e main -Ttext 0 -o _clear clear.o ulib.o usys.o printf.o umalloc.o bitmap.o jos_ui.o
 objdump -S _clear > clear.asm
 objdump -t _clear | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > clear.sym
+
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -fvar-tracking -fvar-tracking-assignments -O0 -g -Wall -MD -gdwarf-2 -m32 -w -fno-omit-frame-pointer -fno-stack-protector   -c -o kill.o kill.c
+ld -m    elf_i386 -N -e main -Ttext 0 -o _kill kill.o ulib.o usys.o printf.o umalloc.o bitmap.o jos_ui.o
+objdump -S _kill > kill.asm
+objdump -t _kill | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > kill.sym
+
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -fvar-tracking -fvar-tracking-assignments -O0 -g -Wall -MD -gdwarf-2 -m32 -w -fno-omit-frame-pointer -fno-stack-protector   -c -o help.o help.c
+ld -m    elf_i386 -N -e main -Ttext 0 -o _help help.o ulib.o usys.o printf.o umalloc.o bitmap.o jos_ui.o
+objdump -S _help > help.asm
+objdump -t _help | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > help.sym
+
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -fvar-tracking -fvar-tracking-assignments -O0 -g -Wall -MD -gdwarf-2 -m32 -w -fno-omit-frame-pointer -fno-stack-protector   -c -o version.o version.c
+ld -m    elf_i386 -N -e main -Ttext 0 -o _version version.o ulib.o usys.o printf.o umalloc.o bitmap.o jos_ui.o
+objdump -S _version > clear.asm
+objdump -t _version | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > version.sym
+
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -fvar-tracking -fvar-tracking-assignments -O0 -g -Wall -MD -gdwarf-2 -m32 -w -fno-omit-frame-pointer -fno-stack-protector   -c -o calc.o calc.c
+ld -m    elf_i386 -N -e main -Ttext 0 -o _calc calc.o ulib.o usys.o printf.o umalloc.o bitmap.o jos_ui.o
+objdump -S _calc > calc.asm
+objdump -t _calc | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > calc.sym
+
 gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -fvar-tracking -fvar-tracking-assignments -O0 -g -Wall -MD -gdwarf-2 -m32 -w -fno-omit-frame-pointer -fno-stack-protector   -c -o cat.o cat.c
 ld -m    elf_i386 -N -e main -Ttext 0 -o _cat cat.o ulib.o usys.o printf.o umalloc.o bitmap.o jos_ui.o
 objdump -S _cat > cat.asm
@@ -69,7 +90,7 @@ gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -fvar-tracking -fvar-trac
 ld -m    elf_i386 -N -e main -Ttext 0 -o _demo demo.o ulib.o usys.o printf.o umalloc.o bitmap.o jos_ui.o
 objdump -S _demo > demo.asm
 objdump -t _demo | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > demo.sym
-./mkfs jos_fs.img ABOUT.txt Developers.txt HELP.txt desktop.bmp explorer.bmp txt.bmp pic.bmp exec.bmp folder.bmp unknow.bmp _init _desktop _sh _cli _echo _ls _clear _cat _shutdown _parent _mkdir _image_viewer _Editor _explorer _demo 
+./mkfs jos_fs.img ABOUT.txt Developers.txt HELP.txt desktop.bmp explorer.bmp txt.bmp pic.bmp exec.bmp folder.bmp unknow.bmp _init _desktop _sh _cli _echo _ls _clear _cat _shutdown _parent _mkdir _image_viewer _Editor _explorer _demo _help _version _calc _kill
 #used 34 (bit 6 ninode 26) free 34 log 30 total 20480
 #balloc: first 4942 blocks have been allocated
 #balloc: write bitmap block at sector 28
