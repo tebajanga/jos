@@ -3,7 +3,7 @@ echo --------------------------------
 sleep 2
 
 rm washa.sh
-rm images/*
+rm images/*.img
 cp components/* ./
 cp boot/* ./
 cp bitmaps/* ./

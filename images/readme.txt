@@ -1,1 +1,1 @@
-This is folder for images.
+This folder stores JOS images files.
