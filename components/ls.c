@@ -70,7 +70,7 @@ ls(char *path)
       		printf(1, "%s FAILI\n", fmtname(buf),st.type);
 	}
 	else if(st.type == 3){
-      		printf(1, "%s KIFAA\n", fmtname(buf),st.type);
+      		//printf(1, "%s KIFAA\n", fmtname(buf),st.type);
 	}
     }
     break;

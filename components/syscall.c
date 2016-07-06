@@ -133,6 +133,7 @@ static int (*syscalls[])(void) = {
 [SYS_getmessage] sys_getmessage,
 [SYS_destroywindow] sys_destroywindow,
 [SYS_updatewindow] sys_updatewindow,
+[SYS_getcwd] sys_getcwd,
 [SYS_getppid] sys_getppid,
 [SYS_shutdown] sys_shutdown,
 [SYS_getallpids] sys_getallpids,

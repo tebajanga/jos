@@ -36,4 +36,4 @@ SYSCALL(updatewindow)
 SYSCALL(getppid)
 SYSCALL(shutdown)
 SYSCALL(getallpids)
-
+SYSCALL(getcwd)

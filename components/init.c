@@ -12,9 +12,9 @@ main(void)
 {
   int pid, wpid;
 
-  if(open("console", O_RDWR) < 0){
-    mknod("console", 1, 1);
-    open("console", O_RDWR);
+  if(open("kioneshi", O_RDWR) < 0){
+    mknod("kioneshi", 1, 1);
+    open("kioneshi", O_RDWR);
   }
   dup(0);  // stdout
   dup(0);  // stderr

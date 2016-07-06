@@ -1,14 +1,14 @@
-# Initial process execs /init.
+# Initial process execs /kipindi.
 
 #include "syscall.h"
 #include "traps.h"
 
 
-# exec(init, argv)
+# exec(kipindi, argv)
 .globl start
 start:
   pushl $argv
-  pushl $init
+  pushl $kipindi
   pushl $0  // where caller pc would be
   movl $SYS_exec, %eax
   int $T_SYSCALL
@@ -19,12 +19,12 @@ exit:
   int $T_SYSCALL
   jmp exit
 
-# char init[] = "/init\0";
-init:
-  .string "/init\0"
+# char kipindi[] = "/kipindi\0";
+kipindi:
+  .string "/kipindi\0"
 
-# char *argv[] = { init, 0 };
+# char *argv[] = { kipindi, 0 };
 .p2align 2
 argv:
-  .long init
+  .long kipindi
   .long 0

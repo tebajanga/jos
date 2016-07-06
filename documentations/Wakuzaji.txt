@@ -1,5 +1,5 @@
-Below are the list of JOS Developers.
-------------------------------------
+Majina ya Wakuzaji wa JOS.
+-------------------------
 
 1. Abdallah, Mohamed
 2. Anthony, Timothy

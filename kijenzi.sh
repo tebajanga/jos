@@ -1,7 +1,20 @@
+echo Ujenzi wa Joint Operating System.
+echo --------------------------------
+sleep 2
+
+rm washa.sh
+rm images/*
 cp components/* ./
 cp boot/* ./
 cp bitmaps/* ./
 cp documentations/* ./
+
+clear
+
+echo Utungaji na Ujenzi JOS - 0%.
+echo ----------------------
+sleep 2
+
 gcc -Werror -Wall -o mkfs mkfs.c
 gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -fvar-tracking -fvar-tracking-assignments -O0 -g -Wall -MD -gdwarf-2 -m32 -w -fno-omit-frame-pointer -fno-stack-protector   -c -o ulib.o ulib.c
 gcc -m32 -gdwarf-2 -Wa,-divide   -c -o usys.o usys.S
@@ -10,9 +23,9 @@ gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -fvar-tracking -fvar-trac
 gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -fvar-tracking -fvar-tracking-assignments -O0 -g -Wall -MD -gdwarf-2 -m32 -w -fno-omit-frame-pointer -fno-stack-protector   -c -o bitmap.o bitmap.c
 gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -fvar-tracking -fvar-tracking-assignments -O0 -g -Wall -MD -gdwarf-2 -m32 -w -fno-omit-frame-pointer -fno-stack-protector   -c -o jos_ui.o jos_ui.c
 gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -fvar-tracking -fvar-tracking-assignments -O0 -g -Wall -MD -gdwarf-2 -m32 -w -fno-omit-frame-pointer -fno-stack-protector   -c -o init.o init.c
-ld -m    elf_i386 -N -e main -Ttext 0 -o _init init.o ulib.o usys.o printf.o umalloc.o bitmap.o jos_ui.o
-objdump -S _init > init.asm
-objdump -t _init | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > init.sym
+ld -m    elf_i386 -N -e main -Ttext 0 -o _kipindi init.o ulib.o usys.o printf.o umalloc.o bitmap.o jos_ui.o
+objdump -S _kipindi > init.asm
+objdump -t _kipindi | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > init.sym
 gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -fvar-tracking -fvar-tracking-assignments -O0 -g -Wall -MD -gdwarf-2 -m32 -w -fno-omit-frame-pointer -fno-stack-protector   -c -o desktop.o desktop.c
 ld -m    elf_i386 -N -e main -Ttext 0 -o _kidadisi desktop.o ulib.o usys.o printf.o umalloc.o bitmap.o jos_ui.o
 objdump -S _kidadisi > desktop.asm
@@ -26,9 +39,9 @@ ld -m    elf_i386 -N -e main -Ttext 0 -o _amri cli.o ulib.o usys.o printf.o umal
 objdump -S _amri > cli.asm
 objdump -t _amri | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > cli.sym
 gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -fvar-tracking -fvar-tracking-assignments -O0 -g -Wall -MD -gdwarf-2 -m32 -w -fno-omit-frame-pointer -fno-stack-protector   -c -o echo.o echo.c
-ld -m    elf_i386 -N -e main -Ttext 0 -o _onesha echo.o ulib.o usys.o printf.o umalloc.o bitmap.o jos_ui.o
-objdump -S _onesha > echo.asm
-objdump -t _onesha | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > echo.sym
+ld -m    elf_i386 -N -e main -Ttext 0 -o _vuma echo.o ulib.o usys.o printf.o umalloc.o bitmap.o jos_ui.o
+objdump -S _vuma > echo.asm
+objdump -t _vuma | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > echo.sym
 gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -fvar-tracking -fvar-tracking-assignments -O0 -g -Wall -MD -gdwarf-2 -m32 -w -fno-omit-frame-pointer -fno-stack-protector   -c -o ls.o ls.c
 ld -m    elf_i386 -N -e main -Ttext 0 -o _orodha ls.o ulib.o usys.o printf.o umalloc.o bitmap.o jos_ui.o
 objdump -S _orodha > ls.asm
@@ -38,10 +51,15 @@ ld -m    elf_i386 -N -e main -Ttext 0 -o _wazi clear.o ulib.o usys.o printf.o um
 objdump -S _wazi > clear.asm
 objdump -t _wazi | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > clear.sym
 
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -fvar-tracking -fvar-tracking-assignments -O0 -g -Wall -MD -gdwarf-2 -m32 -w -fno-omit-frame-pointer -fno-stack-protector   -c -o pwd.o pwd.c
+ld -m    elf_i386 -N -e main -Ttext 0 -o _nilipo pwd.o ulib.o usys.o printf.o umalloc.o
+objdump -S _nilipo > pwd.asm
+objdump -t _nilipo | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > pwd.sym
+
 gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -fvar-tracking -fvar-tracking-assignments -O0 -g -Wall -MD -gdwarf-2 -m32 -w -fno-omit-frame-pointer -fno-stack-protector   -c -o kill.o kill.c
-ld -m    elf_i386 -N -e main -Ttext 0 -o _ondosha kill.o ulib.o usys.o printf.o umalloc.o bitmap.o jos_ui.o
-objdump -S _ondosha > kill.asm
-objdump -t _ondosha | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > kill.sym
+ld -m    elf_i386 -N -e main -Ttext 0 -o _ua kill.o ulib.o usys.o printf.o umalloc.o bitmap.o jos_ui.o
+objdump -S _ua > kill.asm
+objdump -t _ua | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > kill.sym
 
 gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -fvar-tracking -fvar-tracking-assignments -O0 -g -Wall -MD -gdwarf-2 -m32 -w -fno-omit-frame-pointer -fno-stack-protector   -c -o help.o help.c
 ld -m    elf_i386 -N -e main -Ttext 0 -o _msaada help.o ulib.o usys.o printf.o umalloc.o bitmap.o jos_ui.o
@@ -50,8 +68,13 @@ objdump -t _msaada | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > help.sym
 
 gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -fvar-tracking -fvar-tracking-assignments -O0 -g -Wall -MD -gdwarf-2 -m32 -w -fno-omit-frame-pointer -fno-stack-protector   -c -o version.o version.c
 ld -m    elf_i386 -N -e main -Ttext 0 -o _toleo version.o ulib.o usys.o printf.o umalloc.o bitmap.o jos_ui.o
-objdump -S _toleo > clear.asm
+objdump -S _toleo > version.asm
 objdump -t _toleo | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > version.sym
+
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -fvar-tracking -fvar-tracking-assignments -O0 -g -Wall -MD -gdwarf-2 -m32 -w -fno-omit-frame-pointer -fno-stack-protector   -c -o rm.o rm.c
+ld -m    elf_i386 -N -e main -Ttext 0 -o _ondoa rm.o ulib.o usys.o printf.o umalloc.o bitmap.o jos_ui.o
+objdump -S _ondoa > rm.asm
+objdump -t _ondoa | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > rm.sym
 
 gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -fvar-tracking -fvar-tracking-assignments -O0 -g -Wall -MD -gdwarf-2 -m32 -w -fno-omit-frame-pointer -fno-stack-protector   -c -o calc.o calc.c
 ld -m    elf_i386 -N -e main -Ttext 0 -o _kikokotoa calc.o ulib.o usys.o printf.o umalloc.o bitmap.o jos_ui.o
@@ -59,21 +82,44 @@ objdump -S _kikokotoa > calc.asm
 objdump -t _kikokotoa | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > calc.sym
 
 gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -fvar-tracking -fvar-tracking-assignments -O0 -g -Wall -MD -gdwarf-2 -m32 -w -fno-omit-frame-pointer -fno-stack-protector   -c -o cat.o cat.c
-ld -m    elf_i386 -N -e main -Ttext 0 -o _unganisha cat.o ulib.o usys.o printf.o umalloc.o bitmap.o jos_ui.o
-objdump -S _unganisha > cat.asm
-objdump -t _unganisha | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > cat.sym
+ld -m    elf_i386 -N -e main -Ttext 0 -o _fungua cat.o ulib.o usys.o printf.o umalloc.o bitmap.o jos_ui.o
+objdump -S _fungua > cat.asm
+objdump -t _fungua | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > cat.sym
 gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -fvar-tracking -fvar-tracking-assignments -O0 -g -Wall -MD -gdwarf-2 -m32 -w -fno-omit-frame-pointer -fno-stack-protector   -c -o shutdown.o shutdown.c
-ld -m    elf_i386 -N -e main -Ttext 0 -o _zimisha shutdown.o ulib.o usys.o printf.o umalloc.o bitmap.o jos_ui.o
-objdump -S _zimisha > shutdown.asm
-objdump -t _zimisha | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > shutdown.sym
-gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -fvar-tracking -fvar-tracking-assignments -O0 -g -Wall -MD -gdwarf-2 -m32 -w -fno-omit-frame-pointer -fno-stack-protector   -c -o parent.o parent.c
-ld -m    elf_i386 -N -e main -Ttext 0 -o _parent parent.o ulib.o usys.o printf.o umalloc.o bitmap.o jos_ui.o
-objdump -S _parent > parent.asm
-objdump -t _parent | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > parent.sym
+ld -m    elf_i386 -N -e main -Ttext 0 -o _zima shutdown.o ulib.o usys.o printf.o umalloc.o bitmap.o jos_ui.o
+objdump -S _zima > shutdown.asm
+objdump -t _zima | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > shutdown.sym
+
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -fvar-tracking -fvar-tracking-assignments -O0 -g -Wall -MD -gdwarf-2 -m32 -w -fno-omit-frame-pointer -fno-stack-protector   -c -o michecheto.o michecheto.c
+ld -m    elf_i386 -N -e main -Ttext 0 -o _michecheto michecheto.o ulib.o usys.o printf.o umalloc.o bitmap.o jos_ui.o
+objdump -S _michecheto > michecheto.asm
+objdump -t _michecheto | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > michecheto.sym
+
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -fvar-tracking -fvar-tracking-assignments -O0 -g -Wall -MD -gdwarf-2 -m32 -w -fno-omit-frame-pointer -fno-stack-protector   -c -o mchecheto.o mchecheto.c
+ld -m    elf_i386 -N -e main -Ttext 0 -o _mchecheto mchecheto.o ulib.o usys.o printf.o umalloc.o bitmap.o jos_ui.o
+objdump -S _mchecheto > mchecheto.asm
+objdump -t _mchecheto | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > mchecheto.sym
+
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -fvar-tracking -fvar-tracking-assignments -O0 -g -Wall -MD -gdwarf-2 -m32 -w -fno-omit-frame-pointer -fno-stack-protector   -c -o edita.o edita.c
+ld -m    elf_i386 -N -e main -Ttext 0 -o _edita edita.o ulib.o usys.o printf.o umalloc.o bitmap.o jos_ui.o
+objdump -S _edita > edita.asm
+objdump -t _edita | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > edita.sym
+
 gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -fvar-tracking -fvar-tracking-assignments -O0 -g -Wall -MD -gdwarf-2 -m32 -w -fno-omit-frame-pointer -fno-stack-protector   -c -o mkdir.o mkdir.c
-ld -m    elf_i386 -N -e main -Ttext 0 -o _sarikisha mkdir.o ulib.o usys.o printf.o umalloc.o bitmap.o jos_ui.o
-objdump -S _sarikisha > mkdir.asm
-objdump -t _sarikisha | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > mkdir.sym
+ld -m    elf_i386 -N -e main -Ttext 0 -o _sariki mkdir.o ulib.o usys.o printf.o umalloc.o bitmap.o jos_ui.o
+objdump -S _sariki > mkdir.asm
+objdump -t _sariki | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > mkdir.sym
+
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -fvar-tracking -fvar-tracking-assignments -O0 -g -Wall -MD -gdwarf-2 -m32 -w -fno-omit-frame-pointer -fno-stack-protector   -c -o nakili.o nakili.c
+ld -m    elf_i386 -N -e main -Ttext 0 -o _nakili nakili.o ulib.o usys.o printf.o umalloc.o bitmap.o jos_ui.o
+objdump -S _nakili > nakili.asm
+objdump -t _nakili | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > nakili.sym
+
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -fvar-tracking -fvar-tracking-assignments -O0 -g -Wall -MD -gdwarf-2 -m32 -w -fno-omit-frame-pointer -fno-stack-protector   -c -o peleka.o peleka.c
+ld -m    elf_i386 -N -e main -Ttext 0 -o _peleka peleka.o ulib.o usys.o printf.o umalloc.o bitmap.o jos_ui.o
+objdump -S _peleka > peleka.asm
+objdump -t _peleka | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > peleka.sym
+
 gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -fvar-tracking -fvar-tracking-assignments -O0 -g -Wall -MD -gdwarf-2 -m32 -w -fno-omit-frame-pointer -fno-stack-protector   -c -o image_viewer.o image_viewer.c
 ld -m    elf_i386 -N -e main -Ttext 0 -o _image_viewer image_viewer.o ulib.o usys.o printf.o umalloc.o bitmap.o jos_ui.o
 objdump -S _image_viewer > image_viewer.asm
@@ -90,11 +136,9 @@ gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -fvar-tracking -fvar-trac
 ld -m    elf_i386 -N -e main -Ttext 0 -o _demo demo.o ulib.o usys.o printf.o umalloc.o bitmap.o jos_ui.o
 objdump -S _demo > demo.asm
 objdump -t _demo | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > demo.sym
-./mkfs jos_fs.img KUHUSU.txt Wakuzaji.txt MSAADA.txt desktop.bmp explorer.bmp txt.bmp pic.bmp exec.bmp folder.bmp unknow.bmp _init _kidadisi _sh _amri _onesha _orodha _wazi _unganisha _zimisha _sarikisha _image_viewer _Editor _explorer _msaada _toleo _kikokotoa _ondosha _demo
-#used 34 (bit 6 ninode 26) free 34 log 30 total 20480
-#balloc: first 4942 blocks have been allocated
-#balloc: write bitmap block at sector 28
-#balloc: write bitmap block at sector 29
+
+./mkfs jos_fs.img _amri _edita _fungua _kidadisi _kikokotoa _kipindi _msaada _mchecheto _michecheto _nakili _nilipo _ondoa _orodha _peleka _sariki _toleo _ua _vuma _wazi _zima KUHUSU.txt Wakuzaji.txt MSAADA.txt desktop.bmp explorer.bmp txt.bmp pic.bmp exec.bmp folder.bmp unknow.bmp _image_viewer _Editor _explorer
+
 gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -fvar-tracking -fvar-tracking-assignments -O0 -g -Wall -MD -gdwarf-2 -m32 -w -fno-omit-frame-pointer -fno-stack-protector -fno-pic -O -nostdinc -I. -c bootmain.c
 gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -fvar-tracking -fvar-tracking-assignments -O0 -g -Wall -MD -gdwarf-2 -m32 -w -fno-omit-frame-pointer -fno-stack-protector -fno-pic -nostdinc -I. -c bootasm.S
 ld -m    elf_i386 -N -e start -Ttext 0x7C00 -o bootblock.o bootasm.o bootmain.o
@@ -150,6 +194,11 @@ dd if=/dev/zero of=jos.img count=10000
 dd if=bootblock of=jos.img conv=notrunc
 dd if=kernel of=jos.img seek=1 conv=notrunc
 
+echo "\n"
+echo Ujenzi Umemalizika - 100%
+echo ------------------
+sleep 2
+
 mv *.o ./objects
 rm *.h
 rm *.d
@@ -182,7 +231,25 @@ rm bootblock
 rm show1
 rm mkfs
 cp *.img ./images
-
-qemu-system-i386 -serial mon:stdio -hdb jos_fs.img jos.img -smp 1 -m 512 -vga std
-
 rm *.img
+
+echo qemu-system-i386 -serial mon:stdio -hdb images/jos_fs.img images/jos.img -smp 1 -m 512 -vga std > washa.sh
+chmod 777 washa.sh
+#qemu-system-i386 -serial mon:stdio -hdb jos_fs.img jos.img -smp 1 -m 512 -vga std
+echo "\n"
+echo Ujenzi wa Joint Operating System Umemalizika
+echo "\n"
+sleep 5
+clear
+echo "Kwa matumizi yajayo"
+echo "-------------------"
+echo "Uta bofya washa.sh kuanza tumia Joint Operating System."
+echo "Au, utaandika ./washa.sh katika kipindi chako."
+sleep 10
+
+echo "\n"
+echo "Sasa Joint Operating System inaanza..."
+sleep 5
+clear
+qemu-system-i386 -serial mon:stdio -hdb images/jos_fs.img images/jos.img -smp 1 -m 512 -vga std
+

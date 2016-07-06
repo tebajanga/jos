@@ -435,18 +435,19 @@ void
 procdump(void)
 {
   static char *states[] = {
-  [UNUSED]    "unused",
-  [EMBRYO]    "embryo",
-  [SLEEPING]  "sleep ",
-  [RUNNABLE]  "runble",
-  [RUNNING]   "run   ",
-  [ZOMBIE]    "zombie"
+  [UNUSED]    "haitumiki ",
+  [EMBRYO]    "changa    ",
+  [SLEEPING]  "imelala   ",
+  [RUNNABLE]  "inakimbika",
+  [RUNNING]   "inakimbia ",
+  [ZOMBIE]    "imekufa   "
   };
   int i;
   struct proc *p;
   char *state;
   uint pc[10];
-  
+
+  cprintf("NAMBA\tHALI\t\tJINA\n");
   for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
     if(p->state == UNUSED)
       continue;
@@ -454,12 +455,7 @@ procdump(void)
       state = states[p->state];
     else
       state = "???";
-    cprintf("%d %s %s", p->pid, state, p->name);
-    if(p->state == SLEEPING){
-      getcallerpcs((uint*)p->context->ebp+2, pc);
-      for(i=0; i<10 && pc[i] != 0; i++)
-        cprintf(" %p", pc[i]);
-    }
+    cprintf(" %d\t%s\t%s", p->pid, state, p->name);
     cprintf("\n");
   }
 }

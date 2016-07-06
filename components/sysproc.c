@@ -94,9 +94,7 @@ sys_uptime(void)
 //Shutdown
 int
 sys_shutdown(void){
-	cprintf("Shutdown signal sent\n");
-	outw(0xB004, 0x0 | 0x2000);
-
+	outw(0xB004, 0x2000);
 	return 0;
 }
 
@@ -108,25 +106,5 @@ sys_getppid(void){
 struct pstat pstat;
 int
 sys_getallpids(void){
-	struct pstat *st;
-	if(argptr(0,(void*)&st, sizeof(*st)) < 0)
-		return -1;
-	//acquire(&ptable.lock);
-	int i;
-	for(i=0; i < NPROC; i++)
-		st->inuse[i] = pstat.inuse[i],
-		st->pid[i] = pstat.pid[i],
-		st->name[i][0] = pstat.name[i][0],
-			st->name[i][1] = pstat.name[i][1],
-				st->name[i][2] = pstat.name[i][2],
-		st->hticks[i] = pstat.hticks[i],
-		st->lticks[i] = pstat.lticks[i];
-	//release(&ptable.lock);
-
-	//retProcTable();
-	/*int i=0;
-	for(i=0;i<64;i++){
-		info->processID[i]=pstat.pid[i];	
-	}*/
-	return 0;
+	procdump();
 }

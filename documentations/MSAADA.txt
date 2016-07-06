@@ -1,18 +1,19 @@
-Joint Operating System
-----------------------
+Orodha ya Amri zilizopo kwenye JOS
+----------------------------------
 
-Orodha ya Amri zilizopo
-=======================
 amri      - Anzisha mstari amri wa JOS
 kidadisi  - Anzisha JOS kwa muonekano wa picha
-kidadisi  - Anzisha JOS kwa muonekano wa picha
 kikokotoa - Kuanzisha kikokotoa
+kipindi   - Kuanzisha kipindi kipya cha JOS
+kioneshi  - Kuanzisha kioneshi
 msaada    - Kuona orodha ya amri zilizopo
-ondosha   - Kuondoa mchakato uliopo
-onesha    - Kuonyesha nakala kwenye kionyeshi
+nilipo    - Kuona upo katika saraka lipi
+ondoa     - Kufuta faili au saraka husika
+onesha    - Kuonyesha nakala kwenye kioneshi
 orodha    - Kuorodhesha mafaili na saraka zilizopo kwenye JOS
 sarikisha - Kufanya saraka
 toleo     - kuonyesha toleo la JOS
 unganisha - Kuona kilicho ndani ya faili
-wazi      - futa maneno yote kwenye kionyeshi
+ua        - Kuondoa mchakato uliopo
+wazi      - Kufuta maneno yote kwenye kioneshi
 zimisha   - Kuzimisha Joint Operating System

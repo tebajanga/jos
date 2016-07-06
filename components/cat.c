@@ -12,7 +12,7 @@ cat(int fd)
   while((n = read(fd, buf, sizeof(buf))) > 0)
     write(1, buf, n);
   if(n < 0){
-    printf(1, "unganisha: imeshindwa kusoma\n");
+    printf(1, "fungua: imeshindwa kusoma\n");
     exit();
   }
 }
@@ -29,11 +29,12 @@ main(int argc, char *argv[])
 
   for(i = 1; i < argc; i++){
     if((fd = open(argv[i], 0)) < 0){
-      printf(1, "unganisha: imeshindwa fungua %s\n", argv[i]);
+      printf(1, "fungua: imeshindwa kufungua %s\n", argv[i]);
       exit();
     }
     cat(fd);
     close(fd);
   }
+  printf(1, "\n");
   exit();
 }

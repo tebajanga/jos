@@ -76,7 +76,7 @@ runcmd(struct cmd *cmd)
     if(ecmd->argv[0] == 0)
       exit();
     exec(ecmd->argv[0], ecmd->argv);
-    printf(2, "Amri\"%s\" haipo\n", ecmd->argv[0]);
+    printf(2, "Amri \"%s\" haipo\n", ecmd->argv[0]);
     printf(2, "Andika \"msaada\" Kuona orodha ya amri zilizopo.\n");
     break;
 
@@ -134,7 +134,7 @@ runcmd(struct cmd *cmd)
 int
 getcmd(char *buf, int nbuf)
 {
-  printf(2, "$ ");
+  printf(2, "jos:/$ ");
   memset(buf, 0, nbuf);
   gets(buf, nbuf);
   if(buf[0] == 0) // EOF
@@ -149,7 +149,7 @@ main(void)
   int fd;
   
   // Assumes three file descriptors open.
-  while((fd = open("console", O_RDWR)) >= 0){
+  while((fd = open("kioneshi", O_RDWR)) >= 0){
     if(fd >= 3){
       close(fd);
       break;

@@ -31,8 +31,9 @@ int getpid(void);
 char* sbrk(int);
 int sleep(int);
 int uptime(void);
+int getcwd(void*,int);
 int getppid(void);
-int getallpids(struct pstat*);
+void getallpids(void);
 int shutdown(void);
 
 // ulib.c
@@ -59,7 +60,7 @@ int destroywindow(int);
 int getmessage(int, struct message *);
 int updatewindow(int, int, int, int, int);
 
-// themis_ui.c
+// jos_ui.c
 void UI_createWindow(struct window *, const char*, int);
 void UI_destroyWindow(struct window *);
 void updatePartWindow(struct window *, int, int, int, int);
