@@ -18,6 +18,7 @@ main(int argc, char *argv[])
   printf(1, "mchecheto  - Kutengeneza mchecheto mpya wa mfano\n");
   printf(1, "michecheto - Kuona michecheto yote iliyopo\n");
   printf(1, "msaada     - Kuona orodha ya amri zilizopo\n");
+  printf(1, "nakili     - Kunakili mafaili mbalimbali\n");
   printf(1, "nilipo     - Kuona upo katika saraka lipi\n");
   printf(1, "ondoa      - Kufuta faili au saraka husika\n");
   printf(1, "orodha     - Kuorodhesha mafaili na saraka zilizopo kwenye JOS\n");
